@@ -1,322 +1,179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <!-- basic -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- mobile metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <!-- site metas -->
-    <title>Jof</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- style css -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Responsive-->
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-    <!-- Tweaks for older IEs-->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daniil Glazunov · Game Developer &amp; Software Engineer</title>
+  <meta name="description" content="Daniil Glazunov: game developer (Unity, Unreal Engine, Godot) and software engineering master's student at Ca' Foscari University of Venice, building backend services in Python.">
+  <meta property="og:title" content="Daniil Glazunov · Game Developer &amp; Software Engineer">
+  <meta property="og:description" content="Unity (C#), Unreal Engine (C++) and Python backend projects. Based in Venice, Italy.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://acemageddon.github.io/">
+  <style>
+    :root {
+      --bg: #f6f5f2;
+      --surface: #ffffff;
+      --text: #1d1f23;
+      --muted: #5b616b;
+      --line: #e2e0da;
+      --accent: #b4441f;
+      --accent-text: #ffffff;
+      --tag-bg: #efece6;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #131416;
+        --surface: #1b1d20;
+        --text: #ecebe8;
+        --muted: #a3a8b0;
+        --line: #2c2f34;
+        --accent: #f0875f;
+        --accent-text: #131416;
+        --tag-bg: #26292e;
+        --shadow: none;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    a { color: var(--accent); text-underline-offset: 2px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    header { padding: 72px 0 40px; }
+    h1 { font-size: clamp(2.1rem, 6vw, 3.2rem); line-height: 1.1; margin: 0 0 14px; letter-spacing: -0.02em; }
+    .lead { font-size: 1.15rem; max-width: 640px; margin: 0 0 12px; }
+    .meta { color: var(--muted); margin: 0 0 24px; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn {
+      display: inline-block; padding: 9px 16px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--surface); color: var(--text);
+      text-decoration: none; font-weight: 600; font-size: .95rem; box-shadow: var(--shadow);
+    }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+    .btn:hover { border-color: var(--accent); }
+    section { padding: 28px 0; border-top: 1px solid var(--line); }
+    h2 { font-size: 1.35rem; margin: 0 0 6px; }
+    .section-note { color: var(--muted); margin: 0 0 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+      padding: 18px 18px 16px; box-shadow: var(--shadow); display: flex; flex-direction: column;
+    }
+    .card h3 { font-size: 1.05rem; margin: 0 0 4px; }
+    .card h3 a { color: var(--text); text-decoration: none; }
+    .card h3 a:hover { color: var(--accent); }
+    .card .kind { color: var(--muted); font-size: .88rem; margin: 0 0 10px; }
+    .card p { margin: 0 0 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding: 0; list-style: none; }
+    .tags li { background: var(--tag-bg); border-radius: 6px; padding: 2px 8px; font-size: .82rem; color: var(--muted); }
+    ul.plain { margin: 0; padding-left: 20px; }
+    ul.plain li { margin: 0 0 8px; }
+    footer { color: var(--muted); font-size: .9rem; padding: 28px 0 48px; border-top: 1px solid var(--line); }
+    @media (max-width: 520px) {
+      header { padding: 48px 0 28px; }
+      .lead { font-size: 1.05rem; }
+    }
+  </style>
 </head>
-<!-- body -->
-
-<body class="main-layout">
-    <!-- loader  -->
-    <div class="loader_bg">
-        <div class="loader"><img src="images/loading.gif" alt="#" /></div>
-    </div>
-    <!-- end loader -->
-    <!-- header -->
-    <header id="home">
-        <!-- header inner -->
-        <div class="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
-                        <div class="full">
-                            <div class="center-desk">
-                                <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                        <div class="menu-area">
-                            <div class="limit-box">
-                                <nav class="main-menu">
-                                    <ul class="menu-area-main">
-                                        <li class="active"><a href="#home">Home</a></li>
-                                        <li><a href="#about">About Us</a></li>
-                                        <li><a href="#fruits">Fruits</a></li>
-                                        <li><a href="#blog">Blog</a></li>
-                                        <li><a href="#contact">Contact Us</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end header inner -->
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Daniil Glazunov</h1>
+      <p class="lead">Game developer and software engineering master's student at Ca' Foscari University of Venice. I build gameplay in Unity (C#) and Unreal Engine (C++), and backend services in Python.</p>
+      <p class="meta">Venice, Italy · Russian (native) · English (C1) · Italian (beginner)</p>
+      <nav class="links" aria-label="Contact and portfolio links">
+        <a class="btn primary" href="mailto:italyglazunov@gmail.com">italyglazunov@gmail.com</a>
+        <a class="btn" href="https://github.com/AceMageddon">GitHub</a>
+        <a class="btn" href="https://drive.google.com/drive/folders/1HiT_-J0sPYLqy8vku8vt1cIcN8cr_rx9?usp=sharing">Video portfolio</a>
+        <a class="btn" href="https://drive.google.com/drive/folders/11buvKexZojPMPvDQxLiqle9lOKEd4LHL?usp=sharing">Concept art</a>
+      </nav>
     </header>
-    <!-- end header -->
 
+    <main>
+      <section aria-labelledby="games">
+        <h2 id="games">Games</h2>
+        <p class="section-note">Prototypes in Unreal Engine and Unity. A solo game in Godot is in progress, with AI-assisted coding (Claude Code).</p>
+        <div class="grid">
+          <article class="card">
+            <h3><a href="https://github.com/AceMageddon/Unreal-Engine-Projects#snake-ue-427-c">Snake</a></h3>
+            <p class="kind">Unreal Engine 4.27</p>
+            <p>Gameplay written in C++: tick-driven grid movement, collisions handled through an <code>IInteractable</code> interface, one turn per step, random speed-ups.</p>
+            <ul class="tags"><li>C++</li><li>Unreal Engine</li></ul>
+          </article>
+          <article class="card">
+            <h3><a href="https://github.com/AceMageddon/Unreal-Engine-Projects#seminar-8-brick-breaker-ue-53-blueprints">Brick-breaker</a></h3>
+            <p class="kind">Unreal Engine 5.3</p>
+            <p>Built in Blueprints: a block generator, ball reflection, lives on the HUD and random bonuses (extra life, extra ball, bigger paddle).</p>
+            <ul class="tags"><li>Blueprints</li><li>Unreal Engine</li></ul>
+          </article>
+          <article class="card">
+            <h3><a href="https://github.com/AceMageddon/Unity_Projects#towndefence">TownDefence</a></h3>
+            <p class="kind">Unity 2021.3 · playable Windows build</p>
+            <p>Resource management: grow a wheat economy, buy farmers and soldiers, and survive three goblin raids as prices rise and timers shorten.</p>
+            <ul class="tags"><li>C#</li><li>Unity UI</li></ul>
+          </article>
+          <article class="card">
+            <h3><a href="https://github.com/AceMageddon/Unity_Projects#wildball">Wildball</a></h3>
+            <p class="kind">Unity 2021.3 · playable Windows build</p>
+            <p>A physics ball game across several levels: force-based movement, coins, doors, switches and rising platforms, enemies with knock-back.</p>
+            <ul class="tags"><li>C#</li><li>3D physics</li></ul>
+          </article>
+          <article class="card">
+            <h3><a href="https://github.com/AceMageddon/Unity_Projects#2d-platformer">2D Platformer</a></h3>
+            <p class="kind">Unity 2021.3 · playable Windows build</p>
+            <p>Pixel-art action platformer: Timeline intro cutscene, melee attack, patrolling enemies, shared health system, game over and restart.</p>
+            <ul class="tags"><li>C#</li><li>2D physics</li><li>Timeline</li></ul>
+          </article>
+          <article class="card">
+            <h3><a href="https://github.com/AceMageddon/Coliseum_Kursach_Alpha">Coliseum</a></h3>
+            <p class="kind">Desktop · 2021 course project</p>
+            <p>Turn-based arena combat with targeted strikes and upgrades, plus player accounts with email verification codes.</p>
+            <ul class="tags"><li>Java</li><li>JavaFX</li><li>Spring Boot</li><li>PostgreSQL</li></ul>
+          </article>
+        </div>
+      </section>
 
-    <section class="slider_section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="full">
-                        <h1><strong class="cur">Best</strong><br>Fresh Red Apple</h1>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature</p>
-                            <div class="button_section"><a class="main_bt" href="#">Buy Now</a></div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="full text_align_center">
-                        <img class="slide_img" src="images/slider_img.png" alt="#" /> 
-                    </div>
-                </div>
-            </div>
+      <section aria-labelledby="backend">
+        <h2 id="backend">Backend</h2>
+        <p class="section-note">Team projects at Ca' Foscari. Each platform was built twice, as a monolith and as microservices.</p>
+        <div class="grid">
+          <article class="card">
+            <h3><a href="https://github.com/Shhh09git/ClashArena">ClashArena</a></h3>
+            <p class="kind">Esports tournament platform · team of 2</p>
+            <p>I built the identity and security layer (registration, login, JWT and role-based access control) in both builds. I also wrote the monolith, the identity service, the API gateway, the Kubernetes manifests and the CI workflow.</p>
+            <ul class="tags"><li>Python</li><li>Flask</li><li>SQLite</li><li>Redis Streams</li><li>Docker Compose</li><li>Kubernetes</li></ul>
+          </article>
+          <article class="card">
+            <h3><a href="https://github.com/personnna/software-architecture">GYM IT System</a></h3>
+            <p class="kind">Gym tournament management · team of 4</p>
+            <p>I built the auth-service: JWT, RBAC middleware, AES-256-GCM encryption of sensitive fields and an admin panel, with tests, Kubernetes manifests, C4 docs and an OpenAPI spec.</p>
+            <ul class="tags"><li>Python</li><li>Flask</li><li>PostgreSQL 16</li><li>RabbitMQ</li><li>Docker</li><li>GitHub Actions</li></ul>
+          </article>
         </div>
-    </section>
+      </section>
 
-    <!-- about -->
-    <div id="about" class="about layout_padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <img class="img-responsive" src="images/about_img.png" alt="#" />
-                </div>
-                <div class="col-md-6">
-                    <div class="heading margin_top_30">
-                        <h2>About our shop</h2>
-                    </div>
-                    <div class="full margin_top_20">
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class="full margin_top_30">
-                        <a class="main_bt" href="#">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end about -->
-    <!-- section -->
-    <div id="fruits" class="section dark_bg layout_padding left_white">
-        <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                    <div class="heading full text_align_center">
-                        <h2 class="white_font full text_align_center">Our Fruits</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-               <div class="col-md-4 margin_top_30">
-                    <div class="full fr">
-                        <img class="img-responsive" src="images/f1.png" alt="#" />
-                    </div>
-                    <div class="full text_align_center">
-                        <h3 class="white_font">Black Grapes<br><strong class="theme_blue">Fresh Fruit</strong></h3>
-                    </div>   
-                </div>
-                <div class="col-md-4 margin_top_30">
-                    <div class="full fr">
-                        <img class="img-responsive" src="images/f2.png" alt="#" />
-                    </div>
-                    <div class="full text_align_center">
-                        <h3 class="white_font">Pineapple<br><strong class="theme_blue">Fresh Fruit</strong></h3>
-                    </div>
-                </div>
-                <div class="col-md-4 margin_top_30">
-                    <div class="full fr">
-                        <img class="img-responsive" src="images/f3.png" alt="#" />
-                    </div>
-                    <div class="full text_align_center">
-                        <h3 class="white_font">Bananas<br><strong class="theme_blue">Fresh Fruit</strong></h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end section -->
-    <!-- section -->
-    <div class="section layout_padding">
-        <div class="container">
-            <div class="row">
-               <div class="col-md-6">
-                    <div class="full main_heading_1">
-                        <h2>Fresh Lemon</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing el sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita tion ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure doloreprehenderin </p>
-                    </div>   
-                    <div class="full margin_top_30">
-                        <a class="main_bt" href="#">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 margin_top_30 padding_right_0">
-                    <div class="full">
-                        <img src="images/green_fr.png" alt="#" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end section -->
-<!-- section -->
-    <div id="blog" class="section dark_bg layout_padding right_white">
-        <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                    <div class="heading full text_align_center">
-                        <h2 class="white_font full text_align_center">Our Blog</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-               <div class="col-md-4 margin_top_30">
-                    <div class="full" style="overflow: hidden;">
-                    <div class="full bl">
-                        <img class="img-responsive" src="images/blog1.png" alt="#" />
-                    </div>
-                    <div class="full blog_blue text_align_center">
-                        <h5 class="white_font">Post by David Mark 27/07/2019</h3>
-                        <p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniadolor..</p>
-                    </div> 
-                     </div>  
-                </div>
-                <div class="col-md-4 margin_top_30">
-                    <div class="full" style="overflow: hidden;">
-                    <div class="full bl">
-                        <img class="img-responsive" src="images/blog2.png" alt="#" />
-                    </div> 
-                    <div class="full blog_blue text_align_center">
-                        <h5 class="white_font">Post by David Mark 27/07/2019</h3>
-                        <p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniadolor..</p>
-                    </div>
-                     </div>
-                </div>
-                <div class="col-md-4 margin_top_30">
-                    <div class="full" style="overflow: hidden;">
-                    <div class="full bl">
-                        <img class="img-responsive" src="images/blog3.png" alt="#" />
-                    </div> 
-                    <div class="full blog_blue text_align_center">
-                        <h5 class="white_font">Post by David Mark 27/07/2019</h3>
-                        <p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniadolor..</p>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end section -->
-    <!-- section -->
-    <div id="contact" class="section layout_padding">
-        <div class="container-fluid">
-            <div class="row">
-                
-                <div class="col-md-6 padding_left_0">
-                    <div class="full">
-                        <img class="float-left" src="images/fruit_img.png" alt="#" />
-                    </div>
-                </div>
+      <section aria-labelledby="background">
+        <h2 id="background">Background</h2>
+        <ul class="plain">
+          <li><strong>MSc, Software Development and Engineering</strong>, Ca' Foscari University of Venice (2025 – present)</li>
+          <li><strong>MSc, Applied Informatics: Computer Game Development and Game Design</strong>, RANEPA (2023–2025). Thesis: algorithms for adapting tabletop RPG mechanics to computer game systems.</li>
+          <li><strong>Doctoral candidate, Methodology and Technology of Professional Education</strong>, RANEPA (2025 – present). Research: gamification in IT training.</li>
+          <li><strong>Freelance video editor</strong> since 2023 for international clients: long-form YouTube and Shorts/Reels/TikTok in DaVinci Resolve, Premiere Pro and After Effects. Some releases have passed one million views.</li>
+          <li><strong>System administrator</strong>, Teyf Electronics (2023): Ubuntu servers over SSH and a company-wide email rollout.</li>
+          <li>Concept artist for game projects, and a tabletop RPG game master since 2020: three original campaigns, more than 100 live sessions.</li>
+        </ul>
+      </section>
+    </main>
 
-               <div class="col-md-6">
-                <div class="heading">
-                        <h2>Request a <strong class="theme_blue">Call Back</strong></h2>
-                    </div>
-                    <div class="full margin_top_20">
-                        <form>
-                        <div class="row">
-                            <div class="col-sm-12">
-                               <input class="form-control" placeholder="Your Name" type="text" required="">
-                            </div>
-                            <div class="col-sm-12">
-                               <input class="form-control" placeholder="Email" type="Email" required="">
-                            </div>
-                            <div class="col-sm-12">
-                                <input class="form-control" placeholder="Phone" type="text" required="">
-                            </div>
-                            <div class="col-sm-12">
-                                <textarea class="form-control textarea" placeholder="Message"></textarea>
-                            </div>
-                        </div>
-                        <button class="main_bt">Send</button>
-                    </form>
-                    </div>   
-                    
-                </div>
-                
-            </div>
-        </div>
-    </div>
-    <!-- end section -->
-
-    <!-- footer -->
     <footer>
-        <div class="footer layout_padding">
-            <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <h3>Contact Us</h3>
-                            <p>Healing Center, 176 W Street name, New York, NY<br><br>(+91) 987 654 3210<br><br>demo@gmail.com</p>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <h3>Pages</h3>
-                            <p>
-                              <a href="#home">Home</a><br>
-                              <a href="#about">About Us</a><br>
-                              <a href="#fruits">Fruits</a><br>
-                              <a href="#blog">Blog</a><br>
-                              <a href="#contact">Contact Us</a>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <h3>Recent Post</h3>
-                            <p><span><img src="images/f_b1.png"></span><span>consectetur adipisc elit,<br>sed do eiusmod</span></p>
-                            <p class="margin_top_20"><span><img src="images/f_b2.png"></span><span>consectetur adipisc elit,<br>sed do eiusmod</span></p>
-                            <p class="margin_top_20"><span><img src="images/f_b3.png"></span><span>consectetur adipisc elit,<br>sed do eiusmod</span></p>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <h3>Newsletter</h3>
-                            <p>
-                                <form>
-                                    <input type="text" name="email" placeholder="Enter Your Email" /> 
-                                    <button>Subscribe</button>
-                                </form>
-                            </p>
-                        </div>
-                    </div>
-            </div>
-        </div>
-        <div class="copyright">
-            <div class="container">
-                <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free html Templates</a></p>
-            </div>
-        </div>
+      More projects and coursework: <a href="https://github.com/AceMageddon?tab=repositories">github.com/AceMageddon</a>
     </footer>
-    <!-- end footer -->
-    <!-- Javascript files-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/plugin.js"></script>
-
-    <!-- sidebar -->
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/custom.js"></script>
+  </div>
 </body>
-
 </html>
